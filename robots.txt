@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https://nareshkumarbalamurugan.github.io/website_hosting_website/sitemap.xml
+
