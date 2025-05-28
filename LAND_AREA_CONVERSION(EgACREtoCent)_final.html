@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Land Area Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e0f2fe, #fef9c3);
+      padding: 20px;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .author {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px #cbd5e1;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0f766e;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #1e293b;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border: 1px solid #94a3b8;
+      border-radius: 8px;
+    }
+
+    .result {
+      background-color: #f0f9ff;
+      padding: 10px;
+      border-radius: 6px;
+      color: #0f172a;
+      font-size: 14px;
+    }
+
+    @media (min-width: 600px) {
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+<h1>Land Area Converter</h1>
+<div class="author">Made by Kamalesh Kumar Balamurugan</div>
+
+<div class="container">
+
+  <div class="card">
+    <label>Cent</label>
+    <input type="number" oninput="convertCent(this.value)">
+    <div class="result" id="centResults"></div>
+  </div>
+
+  <div class="card">
+    <label>Acre</label>
+    <input type="number" oninput="convertAcre(this.value)">
+    <div class="result" id="acreResults"></div>
+  </div>
+
+  <div class="card">
+    <label>Square Feet</label>
+    <input type="number" oninput="convertSqft(this.value)">
+    <div class="result" id="sqftResults"></div>
+  </div>
+
+  <div class="card">
+    <label>Square Meter</label>
+    <input type="number" oninput="convertSqm(this.value)">
+    <div class="result" id="sqmResults"></div>
+  </div>
+
+  <div class="card">
+    <label>Hectare</label>
+    <input type="number" oninput="convertHectare(this.value)">
+    <div class="result" id="hectareResults"></div>
+  </div>
+
+  <div class="card">
+    <label>Are</label>
+    <input type="number" oninput="convertAre(this.value)">
+    <div class="result" id="areResults"></div>
+  </div>
+
+</div>
+
+<script>
+  function convertCent(v) {
+    v = parseFloat(v);
+    document.getElementById("centResults").innerHTML = `
+      ${v} cent = ${(v * 435.6).toFixed(2)} sqft<br>
+      ${v} cent = ${(v * 40.4686).toFixed(2)} sqm<br>
+      ${v} cent = ${(v / 100).toFixed(4)} acre<br>
+      ${v} cent = ${(v * 0.00404686).toFixed(4)} hectare<br>
+      ${v} cent = ${(v * 0.404686).toFixed(4)} are
+    `;
+  }
+
+  function convertAcre(v) {
+    v = parseFloat(v);
+    document.getElementById("acreResults").innerHTML = `
+      ${v} acre = ${(v * 100).toFixed(2)} cent<br>
+      ${v} acre = ${(v * 43560).toFixed(2)} sqft<br>
+      ${v} acre = ${(v * 4046.86).toFixed(2)} sqm<br>
+      ${v} acre = ${(v * 0.404686).toFixed(4)} hectare
+    `;
+  }
+
+  function convertSqft(v) {
+    v = parseFloat(v);
+    document.getElementById("sqftResults").innerHTML = `
+      ${v} sqft = ${(v / 435.6).toFixed(4)} cent<br>
+      ${v} sqft = ${(v / 43560).toFixed(4)} acre<br>
+      ${v} sqft = ${(v * 0.092903).toFixed(2)} sqm
+    `;
+  }
+
+  function convertSqm(v) {
+    v = parseFloat(v);
+    document.getElementById("sqmResults").innerHTML = `
+      ${v} sqm = ${(v / 40.4686).toFixed(4)} cent<br>
+      ${v} sqm = ${(v / 4046.86).toFixed(4)} acre<br>
+      ${v} sqm = ${(v * 10.7639).toFixed(2)} sqft
+    `;
+  }
+
+  function convertHectare(v) {
+    v = parseFloat(v);
+    document.getElementById("hectareResults").innerHTML = `
+      ${v} hectare = ${(v * 2.47105).toFixed(4)} acre<br>
+      ${v} hectare = ${(v * 100).toFixed(2)} are<br>
+      ${v} hectare = ${(v * 10000).toFixed(2)} sqm
+    `;
+  }
+
+  function convertAre(v) {
+    v = parseFloat(v);
+    document.getElementById("areResults").innerHTML = `
+      ${v} are = ${(v / 100).toFixed(4)} hectare<br>
+      ${v} are = ${(v * 100).toFixed(2)} sqm
+    `;
+  }
+</script>
+
+</body>
+</html>
